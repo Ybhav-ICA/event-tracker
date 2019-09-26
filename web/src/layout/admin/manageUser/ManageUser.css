@@ -1,0 +1,58 @@
+#manage-user {
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+}
+
+.close-btn {
+    background: transparent !important;
+    color: #fff !important;
+    position: absolute;
+    top: -27px;
+    right: -61px;
+}
+
+.model-content .row {
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.event-date label {
+    padding-right: 20px;
+}
+
+.tableMargin {
+    margin-top: 0;
+    padding-top: 10px;
+}
+
+.manage-user-header .row {
+    align-items: center;
+}
+
+.mm-user .ui.form .fields {
+    padding-bottom: 10px;
+}
+
+.icon-button {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+#manage-user .ag-layout-normal .ag-header-row {
+    background-color: #2F8CA4 !important;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#manage-user .ui.button {
+    font-size: larger !important;
+    color: #ffffff !important;
+}
+
+.grid-row {
+    color: #666;
+    font-size: 15px;
+    font-weight: 600;
+}
+

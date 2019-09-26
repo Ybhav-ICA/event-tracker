@@ -1,0 +1,365 @@
+html, body, #root {
+    width: 100%;
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+#main-content {
+    width: 100%;
+    height: 100%;
+}
+
+.headerMenu {
+    margin-left: 75px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.headerMenu.ui.menu .item:before {
+    content: none;
+}
+
+.header-logo {
+    border-bottom: 1px solid #9292924a;
+    padding: 32px;
+    background-image: url("./images/Logo.png");
+    background-repeat: no-repeat;
+    margin: 10px 100px 10px 20px;
+}
+
+#questionare .header-logo {
+    margin: 10px 20px 10px 20px;
+}
+
+#questionare .header-main-style {
+    display: flex;
+}
+
+.header-main-style {
+    width: 100%;
+    height: 84px;
+    background: #FAFAFA;
+    box-shadow: 0 1px 2px 3px rgba(34, 36, 38, .15);
+}
+
+#login-div {
+    height: 100vh;
+}
+
+#login-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+    height: 100vh;
+    background-image: url("./images/Login-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#login-left label {
+    align-self: flex-end;
+}
+
+.logo-title {
+    font-size: 80px;
+    padding-right: 50px;
+}
+
+.sub-title {
+    padding-top: 35px;
+    font-size: x-large;
+    font-style: italic;
+    font-weight: 100;
+    padding-right: 213px;
+}
+
+#login-right {
+    margin: 40% 80px 0 80px;
+}
+
+#login-right h1 {
+    color: #BEBBB8;
+    margin: 0;
+    padding-top: 15px;
+    font-size: 40px;
+}
+
+#login-right .header-logo {
+    margin: 10px 20px 10px 0
+}
+
+.event-link {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #1694F5;
+    font-style: italic;
+    cursor: pointer;
+    padding-bottom: 6px;
+}
+
+.event-link-pt {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #8b66da;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.table-header {
+    align-items: center;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 20px;
+}
+
+.table-header .pagination {
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.table-header .row {
+    align-items: center;
+}
+
+.non-vis-text {
+    text-indent: -9999px !important;
+}
+
+.evt-flex-col {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    margin: 5px;
+    border-right: 1px solid #ccc;
+    flex: 1;
+}
+
+.evnt-head {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.evnt-tail {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #828181;
+}
+
+@media screen and (max-width: 1000px) {
+    #main-content {
+        width: 1000px;
+        height: 500px;
+    }
+}
+
+.msg-banner {
+    font-weight: 600;
+    font-size: 25px;
+    margin: 10% 39%;
+    color: #635aff;
+}
+
+.msg-banner-head {
+    font-weight: 600;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #635aff;
+}
+
+.ques-main {
+    margin: 20px 40px;
+}
+
+.evnt-tk-lb {
+    font-size: 45px;
+    color: #BEBBB8;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 80px;
+}
+
+.ques-dotted {
+    border-bottom: 2px dotted #ccc;
+    margin: 5px 40px;
+}
+
+.question {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.dd-ques, .text-ques {
+    margin-top: 25px;
+}
+
+.ans-space {
+    padding: 15px 10px 20px 10px;
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 40px;
+}
+
+.hr-dotted {
+    border-bottom: 2px dotted #ccc;
+    margin: 10px 0;
+}
+
+.quesionaire .ui.input input, .quesionaire .ui.selection.dropdown, .quesionaire .ui.form textarea {
+    background: #fffdfd;
+    border: 1px solid rgba(165, 162, 162, 0.95);
+}
+
+.slider-handle {
+    width: 15px !important;
+    height: 15px !important;
+    background-color: #f2711c !important;
+    background-image: linear-gradient(to bottom, #f2711c 0, #f2711c 100%) !important;
+}
+
+.slider.slider-horizontal .slider-track {
+    height: 5px !important;
+}
+
+.slider-track-low, .slider-track-high {
+    background: #d2d2d2;
+}
+
+.slider-selection {
+    background-image: linear-gradient(to bottom, #f2711c 0, #f2711c 100%);
+    box-shadow: inset 0 -1px 0 #f2711c;
+}
+
+#events-list .ui.table tr td {
+    color: #666;
+    font-size: 15px;
+    box-shadow: 0 8px 8px 0 #f4f7f9;
+    -webkit-box-shadow: 0 8px 8px 0 #f4f7f9;
+    -moz-box-shadow: 0 8px 8px 0 #f4f7f9;
+    font-weight: 600;
+}
+
+#events-list .ui.celled.table tr th {
+    border-left: 1px solid rgba(255, 255, 255, .9);
+}
+
+.crt-btn .ui.teal.button, .ui.teal.buttons .button {
+    background-color: #fd6a09 !important;
+    font-size: larger !important;
+}
+
+.event-date .ui.input, .inp-wid .ui.input {
+    width: 100%;
+}
+
+.event-date input[type=text], input[type=email], input[type=search], input[type=password] {
+    -webkit-appearance: textarea;
+}
+
+i.icon.edit:hover {
+    color: #1e77ba;
+}
+
+i.icon.send:hover {
+    color: #0ea432;
+}
+
+i.icon.trash:hover {
+    color: #EF404A;
+}
+
+.login-f {
+    margin-top: 20px;
+}
+
+.login-f .fld {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.login-f .ui.form .field.field input:-webkit-autofill {
+    box-shadow: 0 0 0 100px white inset !important;
+    border: none !important;
+}
+
+.login-f .ui.form .field.field input {
+    box-shadow: 0 0 0 100px white inset !important;
+    border: none !important;
+}
+
+.login-f .ui.form input[type=text], .login-f .ui.form input[type=password] {
+    padding: .67861429em 0;
+}
+
+#login-right .ui.primary.button {
+    background-color: #6C52CE;
+}
+
+#login-right .ui.button {
+    font-family: 'Open Sans', sans-serif !important;
+    padding: 0.9em 3em;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: medium
+}
+
+.imp {
+    display: inline-block;
+    font-weight: 600;
+    color: red;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .cmnts-hdr-left label {
+        font-size: 12px !important;
+    }
+
+    .cmnts-hdr-right label {
+        font-size: 14px !important;
+    }
+
+    .question {
+        font-size: 13px !important;
+    }
+
+    .ans-space .input, .ans-space .dropdown, .ans-space .item, .ans-space textarea {
+        font-size: 13px !important;
+    }
+
+    #events-list .ui.table td, .ui.table th {
+        font-size: 12px !important;
+    }
+
+    .evnt-head {
+        font-size: 14px;
+    }
+
+    .evnt-tail {
+        font-size: 1em;
+    }
+
+    .bold-button {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 1023px) {
+    #root {
+        overflow-x: scroll;
+    }
+}

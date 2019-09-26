@@ -1,0 +1,196 @@
+project.ext {
+    os_ = 'windows' //'linux'
+    env_ = 'local' // 'local'
+//  env_ = 'prod' // 'prod'
+}
+
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.M7'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+
+group = 'com.info'
+version = ''
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+    if (rootProject.env_ == 'prod')
+        providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-websocket')
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.9.RELEASE'
+
+    compile('com.microsoft.sqlserver:mssql-jdbc')
+    compile group: 'org.apache.poi', name: 'poi', version: '3.9'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
+
+    // https://mvnrepository.com/artifact/javax.mail/mail
+    compile group: 'javax.mail', name: 'mail', version: '1.4'
+
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('io.projectreactor:reactor-test')
+}
+
+// ***** Custom Scripts  ********* //
+// ***** Move to an external file later on **** //
+class BuildReactJS extends DefaultTask {
+    //	String message
+    //	String recipi ent
+
+
+    @TaskAction
+    void buildReactJs1() {
+        println "Sawan: Call build.bat(npm build) etc and copy build files to crt/src/..../static folder"
+
+    }
+}
+
+
+class ReplaceStaticPath extends DefaultTask {
+
+    @TaskAction
+    void replaceStaticPath() {
+        //Replace '/static' folder path in index.html with 'static' path
+        String contents = new File('src/main/resources/static/index.html').getText('UTF-8')
+        contents = contents.replaceAll('/static', 'static')
+        new File('src/main/resources/static/index.html').write(contents, 'UTF-8')
+        //Replace 'static/' folder path in manifest.json and asset-manifest.json with 'SocialMedia/static/' path
+        String manifestContents = new File('src/main/resources/static/manifest.json').getText('UTF-8')
+        manifestContents = manifestContents.replaceAll('static/', 'EventTracker/static/')
+        new File('src/main/resources/static/manifest.json').write(contents, 'UTF-8')
+
+        //Replace 'static' folder path in js files with 'SocialMedia/static' path
+
+        File jsFiles = new File('src/main/resources/static/static/js');
+        File[] jsFilesList = jsFiles.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".js") || name.endsWith(".js.map");
+            }
+        });
+        jsFilesList.each {
+            File file ->
+                String fileContents = file.getText('UTF-8')
+                fileContents = fileContents.replaceAll('static/', 'EventTracker/static/')
+
+                file.write(fileContents, 'UTF-8')
+                new File(file.getAbsolutePath()).write(fileContents, 'UTF-8')
+        }
+
+        //Replace 'static' folder path in css files with 'SocialMedia/static' path
+
+        File cssFiles = new File('src/main/resources/static/static/css');
+        File[] cssFilesList = cssFiles.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".css") || name.endsWith(".css.map")
+            }
+        });
+        cssFilesList.each {
+            File file ->
+                String fileContents = file.getText('UTF-8')
+                fileContents = fileContents.replaceAll('/static', '../../static')
+                new File(file.getAbsolutePath()).write(fileContents, 'UTF-8')
+        }
+    }
+}
+
+
+class CopyProdIndexFile extends DefaultTask {
+
+
+    @TaskAction
+    void copyProdIndexFile() {
+        String contents = new File('../web/public/index.html').getText('UTF-8')
+        new File('../web/public/index.local.html').write(contents, 'UTF-8')
+        String contents1 = new File('../web/public/index.prod.html').getText('UTF-8')
+        new File('../web/public/index.html').write(contents1, 'UTF-8')
+
+    }
+}
+
+
+class ReplaceContentToOriginalIndex extends DefaultTask {
+    @TaskAction
+    void replaceContent() {
+        String contents = new File('../web/public/index.local.html').getText('UTF-8')
+        new File('../web/public/index.html').write(contents, 'UTF-8')
+    }
+}
+
+task clearOutputDirectory(type: Delete) {
+    def dirName = "src/main/resources/static"
+    delete dirName
+    doLast {
+        file(dirName).mkdirs()
+    }
+}
+
+task copyProdIndexFile(type: CopyProdIndexFile)
+
+
+task reactBuild(type: Exec) {
+    workingDir '../web'
+    if (rootProject.os_ == 'linux')
+        commandLine "sh", "build.sh"
+    else
+        commandLine "cmd", "/c", 'build.bat'
+
+}
+
+task copyReactBuildToOuputDir(type: Copy) {
+    from('../web/build')
+    into('src/main/resources/static')
+}
+
+task replaceToOriginalIndexFile(type: ReplaceContentToOriginalIndex)
+
+task reaplaceStaticPath(type: ReplaceStaticPath)
+
+
+task cleanBuildPublish {
+
+    dependsOn 'clearOutputDirectory'
+    dependsOn 'copyProdIndexFile'
+    dependsOn 'reactBuild'
+    dependsOn 'copyReactBuildToOuputDir'
+    dependsOn 'reaplaceStaticPath'
+    dependsOn 'replaceToOriginalIndexFile'
+    tasks.findByName('replaceToOriginalIndexFile').mustRunAfter 'reaplaceStaticPath'
+    tasks.findByName('reaplaceStaticPath').mustRunAfter 'copyReactBuildToOuputDir'
+    tasks.findByName('copyReactBuildToOuputDir').mustRunAfter 'reactBuild'
+    tasks.findByName('reactBuild').mustRunAfter 'copyProdIndexFile'
+    tasks.findByName('copyProdIndexFile').mustRunAfter 'clearOutputDirectory'
+}
+
+compileJava.dependsOn cleanBuildPublish

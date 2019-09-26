@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+label {
+    font-size: medium;
+    font-weight: 600;
+}
+
+/*  Styling the AG Grid to look like the Semantic UI Grid - Looks more clean */
+.ag-fresh {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.ag-fresh .ag-header-group-cell-with-group {
+    border-bottom: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+.ag-fresh .ag-group-cell {
+    font-style: normal !important;
+}
+
+.ag-fresh .ag-header-group-cell {
+    border-right: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+.ag-fresh .ag-header-cell {
+    border-right: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+.ag-fresh .ag-header {
+    background: #F9FAFB !important;
+    border-bottom: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+.ag-fresh .ag-root {
+    border: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+.ag-fresh .ag-row-even, .ag-fresh .ag-row-odd {
+    border-bottom: 1px solid #e8e7e7;
+}
+
+.ag-fresh .ag-ltr .ag-cell-no-focus {
+    border-right: 1px solid #e8e7e7 !important;
+}
+
+.ag-fresh .ag-root {
+    border: 1px solid rgba(34, 36, 38, .15) !important;
+}
+
+.ag-fresh .ag-cell-not-inline-editing {
+    padding: 10px 10px 10px 15px !important;
+    text-align: left !important;
+}
+
+.ag-fresh .ag-header-cell-label {
+    padding: 10px 10px 10px 15px !important;
+    text-align: left !important;
+    font-weight: 600;
+}
+
+.ag-fresh .ag-header-select-all img {
+    padding: 11px;
+}
+
+body .ag-fresh .ag-row-selected {
+    background-color: #d4edda !important;
+}
+
+body .ag-fresh .ag-row-selected .ag-cell {
+    background-color: #ecf9ff !important;
+}
+
+/*  Styling the AG Grid to look like the Semantic UI Grid - Looks more clean */
+
+/* Pagination CSS Starts  Here */
+
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    border-radius: 4px;
+}
+
+.pagination li a {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.pagination li:first-child a {
+    margin-left: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.pagination li:last-child a {
+    margin-left: 0;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+.pagination .disabled a {
+    color: #868e96;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+.pagination .disabled a {
+    color: #868e96;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+.pagination .active a {
+    z-index: 2;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.menu-bar .ui.basic.button {
+    box-shadow: none !important;
+    border-radius: 30px !important;
+}
+
+/* Pagination CSS Ends Here */
+
+/* Customize CSS for ui menu */
+
+.ui.menu {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
+.ui.menu .item {
+    color: #2B2B2B !important;
+    font-weight: 600 !important;
+    font-size: 15px;
+}
+
+.ui.menu > .item:first-child {
+    border-radius: 0 !important;
+}
+
+/* Customize CSS for ui menu */
+
+/* Bootstrap slider CSS */
+
+.bs-slider-div {
+    display: inline-block;
+    color: #FF7700;
+}
+
+.bs-slider {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.bs-slider-div span {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.col-dir {
+    display: flex;
+    flex-direction: column;
+}
+
+.hand-cursor {
+    cursor: pointer;
+}
+
+.event-date-pickr {
+    display: inline-block;
+}
+
+/* Confirmation Popup CSS Starts */
+
+.confirm-popup .content {
+    text-align: left !important;
+    color: #111111 !important;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    padding: 0 0 55px 0 !important;
+}
+
+.msg-content {
+    background: #f3f3f3;
+    padding: 20px;
+}
+
+.message {
+    padding-top: 20px;
+    font-weight: 300;
+}
+
+.pop-up-btns {
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.pop-up-btns .ui.button {
+    border-radius: 0 !important;
+    text-transform: uppercase;
+    font-size: 1.1rem !important;
+    font-weight: 500;
+}
+
+.pop-up-btns .save-btn {
+    background: #05B740 !important;
+    color: #fff !important;
+    border: 1px solid #05B740 !important;
+}
+
+.pop-up-btns .cancel-btn {
+    background: transparent !important;
+    color: #707070 !important;
+    border: 1px solid #95989A !important;
+    margin-right: 10px !important;
+}
+
+/* Confirmation Popup CSS Ends */
+
+.date-picker-error input {
+    background: #FFF6F6;
+    border: 1px solid #E0B4B4;
+}
+
+.bold-button .ui.button {
+    font-size: larger !important;
+    color: #ffffff !important;
+}
